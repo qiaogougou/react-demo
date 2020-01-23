@@ -52,7 +52,6 @@ export default class TestLifeCycle16 extends Component {
         clearInterval(this.timeId)
     }
 
-
     render(){
         console.log("render")
         return(
