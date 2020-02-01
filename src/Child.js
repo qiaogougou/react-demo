@@ -1,21 +1,13 @@
 import React, { Component } from 'react'
 
-export default class TestLifeCycle17 extends Component {
+export default class Child extends Component {
     constructor(props){
         super(props)
         console.log("constructor")
         this.state = {
-            isRender: true,
-            time: new Date()
         }
-        this.timeId = setInterval(()=>this.tick(), 1000)
     }
     
-    tick(){
-        this.setState({
-            time: new Date()
-        })
-    }
     static getDerivedStateFromProps(nextProps, prevState){
         console.log("get derived state from props 函数返回结果将会被添加到state上, return null state 不需要任何改变")
         return {
@@ -47,13 +39,9 @@ export default class TestLifeCycle17 extends Component {
     }
 
     render(){
-        console.log('render', this.state)
         return (
             <div>
-                <p>render中，虚拟dom 会 update 真正dom HTML</p>
-                Test Life Cycle 17
-                <button type="button" onClick={()=>this.setState({})}>setState</button>
-                {this.state.time.getSeconds()}
+               child name : {this.props.name}
             </div>
         )
     }

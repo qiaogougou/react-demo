@@ -3,6 +3,10 @@ import "./App.css";
 import TestLifeCycle16 from './TestLifeCycle16'
 import TestLifeCycle17 from './TestLifeCycle17'
 import PropTypes from 'prop-types'
+import Child from "./Child";
+import PureComp from "./component/PureComp";
+import RegularComp from "./component/RegularComp";
+import ParentComp from "./component/ParentComp";
 
 class Title extends Component {
   static propTypes = {
@@ -25,7 +29,8 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      isRenderTest: true
+      isRenderTest: true,
+      name: 'john'
     }
   }
 
@@ -33,9 +38,9 @@ class App extends Component {
     return (
       <div className="App">
         {/* <Title title="这是标题"></Title> */}
-        <Title title={5}></Title>
+        <Title title={"str"}></Title>
         {/* {this.state.isRenderTest ? <TestLifeCycle16></TestLifeCycle16> : "不渲染Test LifeCycle 16"} */}
-        {this.state.isRenderTest ? <TestLifeCycle17></TestLifeCycle17> : "不渲染Test LifeCycle 17"}
+        {/* {this.state.isRenderTest ? <TestLifeCycle17></TestLifeCycle17> : "不渲染Test LifeCycle 17"} */}
         <br/><br/>
         <p>App test</p>
         <button type="button" onClick={()=>this.setState({})}>Parent set state update</button>
@@ -44,6 +49,10 @@ class App extends Component {
             isRenderTest: !this.state.isRenderTest
           })
         }}>Render button</button>
+        
+        
+        <Child name={this.state.name}></Child>
+        <ParentComp></ParentComp>
         
       </div>
     );

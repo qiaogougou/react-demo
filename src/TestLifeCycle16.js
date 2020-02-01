@@ -19,11 +19,16 @@ export default class TestLifeCycle16 extends Component {
     UNSAFE_componentWillMount(){
         console.log('UNSAFE component will mount')
         this.timeId = setInterval(()=>{this.tick()}, 1000)
-        // ajax 调用的位置
+        // ajax 调用的位置 或调整页面大小等操作
+        if(window.innerWidth < 500){
+            this.setState({innerWidth: window.innerWidth})
+        }
+
     }
 
     componentDidMount(){
-        console.log('component did mount')
+        // ajax call 在这个生命周期中调用？
+        console.log('如果有子组件 会先执行 child 的生命周期 child render后 再执行父组件的 component did mount')
     }
 
 
